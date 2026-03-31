@@ -123,6 +123,11 @@
       border-color: var(--accent);
       background: rgba(99, 102, 241, 0.1);
     }
+    .btn-sm {
+      padding: 0.55rem 1rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+    }
 
     .card {
       background: var(--bg-card);
@@ -235,6 +240,25 @@
       color: white;
       border: 4px solid var(--bg-card);
       box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+    }
+    .avatar-initials {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      font-weight: 700;
+      color: white;
     }
     .hero h1 {
       font-size: 2.5rem;
@@ -533,6 +557,12 @@
     @media (prefers-reduced-motion: reduce) {
       * { transition: none !important; animation: none !important; }
     }
+
+    @media print {
+      header { display: none !important; }
+      body { background: white !important; color: #0f172a !important; }
+      a { color: #0f172a !important; }
+    }
   </style>
   
   <!-- Structured Data -->
@@ -567,11 +597,14 @@
       </nav>
       <div class="header-actions">
         <div class="lang-toggle" onclick="toggleLang()" title="Toggle Language">
-          <i class="fas fa-globe"></i> <span id="lang-label">EN</span>
+          <i class="fas fa-globe"></i> <span id="lang-label">ID</span>
         </div>
         <div class="theme-toggle" id="theme-toggle" role="button" tabindex="0" aria-label="Toggle Theme" title="Toggle Theme">
           <i class="fas fa-sun" id="theme-icon"></i>
         </div>
+        <a href="Arief-Hidayat-Sutomo-CV.pdf" class="btn btn-outline btn-sm" id="cv-download" download="Arief-Hidayat-Sutomo-CV.pdf">
+          <i class="fas fa-download"></i> <span data-i18n="btn_cv">Download CV</span>
+        </a>
         <a href="#contact" class="btn btn-sm" data-i18n="btn_hire">Let's Talk</a>
       </div>
     </div>
@@ -580,19 +613,20 @@
   <main class="container">
     <!-- Hero -->
     <section class="hero">
-      <div class="avatar" aria-label="Profile">AS</div>
+      <div class="avatar" aria-label="Profile">
+        <img
+          src="avatar.jpeg"
+          alt="Foto Arief Hidayat Sutomo"
+          class="avatar-img"
+          onerror="this.remove(); document.querySelector('.avatar-initials').style.display='flex';"
+        />
+        <span class="avatar-initials">AS</span>
+      </div>
       <h1>
         <span data-i18n="hero_greeting">Hi, I'm</span><br>
         <span class="title-accent">Arief Hidayat Sutomo</span>
       </h1>
       <p data-i18n="hero_desc">Tech Lead Engineer specializing in SaaS development, scalable backend systems, and business automation solutions.</p>
-      
-      <div class="hero-cta">
-        <a href="#projects" class="btn" data-i18n="btn_projects">View Products & Client Work</a>
-        <a href="Arief-Hidayat-Sutomo-CV.pdf" class="btn btn-outline" id="cv-download" download="Arief-Hidayat-Sutomo-CV.pdf">
-          <i class="fas fa-download"></i> <span data-i18n="btn_cv">Download CV</span>
-        </a>
-      </div>
       
       <!-- <div class="status-badge" data-i18n="status_open">
         <i class="fas fa-circle"></i> Open to new opportunities
@@ -889,7 +923,7 @@
   </footer>
 
   <script>
-    let lang = 'en';
+    let lang = 'id';
 
     let theme = 'dark';
     const THEME_STORAGE_KEY = 'theme';
