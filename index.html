@@ -602,7 +602,7 @@
         <div class="theme-toggle" id="theme-toggle" role="button" tabindex="0" aria-label="Toggle Theme" title="Toggle Theme">
           <i class="fas fa-sun" id="theme-icon"></i>
         </div>
-        <a href="Arief-Hidayat-Sutomo-CV.pdf" class="btn btn-outline btn-sm" id="cv-download" download="Arief-Hidayat-Sutomo-CV.pdf">
+        <a href="arief-hidayat-sutomo-cv.pdf" class="btn btn-outline btn-sm" id="cv-download" download="arief-hidayat-sutomo-cv.pdf">
           <i class="fas fa-download"></i> <span data-i18n="btn_cv">Download CV</span>
         </a>
         <a href="#contact" class="btn btn-sm" data-i18n="btn_hire">Let's Talk</a>
@@ -979,7 +979,7 @@
         exp_invoiku: "Founded invoiku.id, an invoicing app with automated WhatsApp reminders to help small businesses (UMKM) get paid faster.",
         exp_topuphemat: "Built and operate topuphemat.com, a digital top-up store for game credits and vouchers in Indonesia.",
         exp_metanouva: "Leading engineering initiatives, designing scalable systems, and mentoring developers to deliver SaaS and enterprise solutions across multiple sectors.",
-        exp_bigio: "Developed and maintained PHP-based web applications, collaborating with product and QA teams to ship features and support production systems.",
+        exp_bigio: "Developed and maintained mobile & web applications, collaborating with product and QA teams to ship features and support production systems.",
         exp_konsepnet: "Built Android applications, implemented UI flows, and integrated APIs to deliver reliable mobile features.",
         proj_invoiku: "Automated invoicing platform with smart payment reminders, multi-currency support, and analytics dashboard. Built for freelancers and SMEs.",
         proj_invoiku_sub: "Personal Product • SaaS Invoicing Platform",
@@ -1012,7 +1012,7 @@
         exp_invoiku: "Membangun invoiku.id, aplikasi invoice dengan pengingat WhatsApp otomatis untuk membantu bisnis kecil (UMKM) menagih pembayaran lebih cepat.",
         exp_topuphemat: "Membangun dan mengelola topuphemat.com, toko top-up digital untuk game credits dan voucher di Indonesia.",
         exp_metanouva: "Memimpin inisiatif engineering, merancang sistem yang scalable, dan membimbing developer untuk menghadirkan solusi SaaS dan enterprise lintas sektor.",
-        exp_bigio: "Mengembangkan dan memelihara aplikasi web berbasis PHP, kolaborasi dengan tim produk dan QA untuk merilis fitur serta menjaga sistem produksi.",
+        exp_bigio: "Mengembangkan dan memelihara aplikasi mobile & web applications, kolaborasi dengan tim produk dan QA untuk merilis fitur serta menjaga sistem produksi.",
         exp_konsepnet: "Membangun aplikasi Android, mengimplementasikan alur UI, dan integrasi API untuk menghadirkan fitur mobile yang stabil.",
         proj_invoiku: "Platform invoice otomatis dengan pengingat pembayaran cerdas, dukungan multi-mata uang, dan dashboard analitik. Dibangun untuk freelancer dan UKM.",
         proj_invoiku_sub: "Produk Pribadi • Platform Invoice SaaS",
@@ -1223,33 +1223,6 @@
         try { w.print(); } catch {}
       }, 500);
     }
-
-    const CV_URL = 'Arief-Hidayat-Sutomo-CV.pdf';
-    const CV_FILENAME = 'Arief-Hidayat-Sutomo-CV.pdf';
-
-    document.getElementById('cv-download').addEventListener('click', async (e) => {
-      e.preventDefault();
-      try {
-        const res = await fetch(CV_URL, { cache: 'no-store' });
-        if (!res.ok) {
-          throw new Error(`Failed to fetch CV: ${res.status}`);
-        }
-        const blob = await res.blob();
-        const objectUrl = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = objectUrl;
-        a.download = CV_FILENAME;
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        URL.revokeObjectURL(objectUrl);
-      } catch (err) {
-        alert(lang === 'en'
-          ? `PDF CV not found (${CV_URL}). Opening generated CV view for printing.`
-          : `PDF CV belum ada (${CV_URL}). Saya buka tampilan CV hasil generate untuk dicetak.`);
-        openGeneratedCvPrintView();
-      }
-    });
 
     // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
